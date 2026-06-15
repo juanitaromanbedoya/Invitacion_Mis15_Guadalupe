@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación 15 Años - Guadalupe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<button id="music-btn" onclick="toggleMusic()" title="Música">🎵</button>
+
+<audio id="bg-music" src="musica.mp4" preload="auto"></audio>
+
+<div id="inv-root">
+  <canvas id="forest-bg"></canvas>
+  <canvas id="sparkle-layer"></canvas>
+
+  <div class="page active" id="p1"> 
+    <div class="title-fairy">Mis XV Años</div>
+    <div class="title-fairy" style="font-size:3rem; margin-top:-8px;">Guadalupe</div>
+    
+    <div class="dual-shiny-container">
+      <div class="shiny-frame">
+        <img src="./img/DSC_0595.jpg" alt="Guadalupe Portada 1">
+      </div>
+      <div class="shiny-frame">
+        <img src="./img/DSC_0674.jpg" alt="Guadalupe Portada 2">
+      </div>
+    </div>
+
+    <div class="subtitle-fairy">Una noche de cuento de hadas</div>
+
+    <div class="glass main-invitation-glass">
+      <p>
+        Hay momentos en la vida que son inolvidables, y compartirlos con quienes amas los hace eternos...
+      </p>
+    </div>
+
+    <div class="controls-container">
+      <button class="nav-btn" onclick="handleFirstOpen()">Abrir invitación </button>
+      <div class="dots" id="dots1"></div> 
+    </div>
+  </div> 
+
+  <div class="page" id="p2">
+    <div class="section-title">¡La Quinceañera!</div>
+
+    <div class="dual-shiny-container">
+      <div class="shiny-frame">
+        <img src="./img/fotocaballo.jpg" alt="Foto Guadalupe 1">
+      </div>
+      <div class="shiny-frame">
+        <img src="./img/DSC_0608.jpg" alt="Foto Guadalupe 2">
+      </div>
+    </div>
+
+    <div class="glass">
+      <p class="msg-text" id="typing-text-p2"></p>
+    </div>
+
+    <div class="controls-container">
+      <div style="display:flex; gap:10px;">
+        <button class="nav-btn" onclick="goTo(0)">← Volver</button>
+        <button class="nav-btn" onclick="goTo(2)">Siguiente →</button>
+      </div>
+      <div class="dots" id="dots2"></div>
+    </div>
+  </div> 
+
+  <div class="page" id="p3">
+    <div class="section-title">Con Todo el amor del Mundo</div>
+
+    <div class="photo-frame">
+      <img src="./img/sombrero.jpg" alt="Foto Guadalupe 3">
+    </div>
+
+    <div class="glass">
+      <p class="msg-text" id="typing-text-p3"></p>
+    </div>
+
+    <div class="controls-container">
+      <div style="display:flex; gap:10px;">
+        <button class="nav-btn" onclick="goTo(1)">← Volver</button>
+        <button class="nav-btn" onclick="goTo(3)">Siguiente →</button>
+      </div>
+      <div class="dots" id="dots3"></div> 
+    </div>
+  </div>
+
+  <div class="page" id="p4">
+    <div class="section-title">¡Una invitación especial!</div>
+    
+    <div class="photo-frame">
+      <img src="./img/foto_f.png" alt="Foto Familia">
+    </div>
+    
+    <div class="glass">
+      <p class="msg-text" id="typing-text-p4-intro"></p>
+      <p id="typing-text-p4-fecha"></p>
+      <p class="msg-text" id="typing-text-p4-cierre"></p>
+    </div>
+
+    <div class="controls-container">
+      <div style="display:flex; gap:10px;">
+        <button class="nav-btn" onclick="goTo(2)">← Volver</button>
+        <button class="nav-btn" onclick="goTo(4)">Siguiente →</button>
+      </div>
+      <div class="dots" id="dots4"></div>
+    </div>
+  </div>
+  
+  <div class="page" id="p5">
+    <div class="section-title">¿Dónde?</div>
+    
+    <div class="glass" style="margin: 5px 0;">
+      <p class="msg-text" style="font-weight:bold; margin-bottom:10px; font-size:1.2rem;">
+         Eventos Casa Prado
+      </p>
+      <div class="map-btn" onclick="openMap()" style="margin: 0 auto;">
+        📍 Ver ubicación
+      </div>
+    </div>
+
+    <div class="section-title">¡Falta muy poco!</div>
+    
+    <div class="glass" style="margin: 5px 0;">
+      <p style="font-family:'Playfair Display',serif; color:#4A3B23; font-size:0.75rem; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; text-align:center;">
+        Tiempo restante para la magia
+      </p>
+      <div class="countdown-grid" id="countdown"></div>
+    </div>
+
+    <div class="controls-container">
+      <div style="display:flex; gap:10px;">
+        <button class="nav-btn" onclick="goTo(3)">← Volver</button>
+        <button class="nav-btn" onclick="goTo(5)">Siguiente →</button>
+      </div>
+      <div class="dots" id="dots5"></div> 
+    </div>
+  </div>
+
+  <div class="page" id="p6">
+    <div class="section-title">Detalles Especiales</div>
+    
+    <div class="glass" style="padding: 15px 15px; max-height: 65vh; overflow-y: auto; text-align: left;">
+      
+      <div class="info-val" style="margin-bottom: 10px; display: block;">
+        <div class="info-label" style="text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 2px;">
+           Codigo de Vestimenta
+        </div>
+        <div class="info-val" style="font-weight: 600; margin-bottom: 3px;">
+          Colores Pastel — Tonos suaves y delicados
+        </div>
+        <div class="msg-text" style="font-style:0; opacity: 0.85; line-height: 1.3; font-size: 0.8rem;">
+          Te agradecemos acompañarnos vistiendo estos tonos.
+        </div>
+      </div>
+
+      <hr style="border: 0; border-top: 1px solid rgba(195, 131, 128, 0.25); margin: 8px 0;">
+
+      <div class="info-val" style="margin-bottom: 10px; display: block;">
+        <div class="info-label" style="text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 2px;">
+           Presentes
+        </div>
+        <div class="info-val" style="font-weight: 600; margin-bottom: 3px;">
+          Lluvia de Sobres
+        </div>
+        <div class="msg-text" style="font-style:0; opacity: 0.85; line-height: 1.3; font-size: 0.8rem;">
+          Tu presencia es mi mejor regalo, pero si deseas tener un detalle, dispondremos de un cofre en el salón.
+        </div>
+      </div>
+
+      <hr style="border: 0; border-top: 1px solid rgba(195, 131, 128, 0.25); margin: 8px 0;">
+
+      <div style="margin-top: 8px; text-align: center;">
+        <div class="info-val" style="font-weight: 600; margin-bottom: 3px; color: #C38380; font-size: 1.1rem;">
+          Confirmar Asistencia
+        </div>
+        <div class="msg-text" style="font-style:0; line-height: 1.4; margin-bottom: 12px; padding: 0 5px; font-size: 0.82rem;">
+          Te esperamos con los brazos abiertos y mucha ilusión. Por favor, confirma tu hermosa presencia antes del gran día.
+        </div>
+        
+        <button class="nav-btn" style="width: 100%; padding: 10px; font-size: 0.85rem; font-weight:600; background-color: #C38380; color: #FFFFFF; border: none; border-radius: 20px; cursor: pointer; box-shadow: 0 4px 10px rgba(195,131,128,0.3);" 
+                onclick="window.open('https://wa.me/573009559720?text=¡Hola!%20Quiero%20confirmar%20mi%20asistencia%20a%20los%2015%20años%20de%20Guadalupe%20', '_blank')">
+           Confirmar por WhatsApp
+        </button>
+      </div>
+
+    </div>
+
+    <div class="controls-container" style="margin-top: 12px;">
+      <div style="display:flex; gap:10px;">
+        <button class="nav-btn" onclick="goTo(4)">← Volver</button>
+        <button class="nav-btn" onclick="goTo(6)">Siguiente →</button>
+      </div>
+      <div class="dots" id="dots6"></div> 
+    </div>
+  </div> 
+
+ <div class="page" id="p7">
+    <div class="section-title">Mi Galería</div>
+
+    <div class="glass" style="padding: 12px; max-height: 52vh; overflow-y: scroll; -webkit-overflow-scrolling: touch; display: block; box-sizing: border-box;">
+      
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; box-sizing: border-box;">
+        
+        <div style="width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 12px; border: 2px solid rgba(195, 131, 128, 0.4); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <img src="./img/bebe.jpg" alt="Galería 1" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+
+        <div style="width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 12px; border: 2px solid rgba(195, 131, 128, 0.4); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <img src="./img/DSC_1115.jpg" alt="Galería 2" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+
+        <div style="width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 12px; border: 2px solid rgba(195, 131, 128, 0.4); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <img src="./img/DSC_0772.jpg" alt="Galería 3" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+
+        <div style="width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 12px; border: 2px solid rgba(195, 131, 128, 0.4); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <img src="./img/DSC_0628.jpg" alt="Galería 4" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+
+        <div style="width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 12px; border: 2px solid rgba(195, 131, 128, 0.4); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <img src="./img/beso.jpg" alt="Galería 5" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+
+        <div style="width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 12px; border: 2px solid rgba(195, 131, 128, 0.4); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <img src="./img/niña.jpg" alt="Galería 6" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="controls-container" style="margin-top: 10px;">
+      <button class="nav-btn" onclick="goTo(5)">← Volver</button>
+      <div class="dots" id="dots7"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script> 
+</body>
+</html>
